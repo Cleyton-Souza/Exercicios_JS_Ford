@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+</head>
+
+<body>
+    <script>
+        //Crie uma agenda de contatos que permita adicionar, visualizar, editar e excluir contatos.
+        //Utilizae switch-case, while e estruturas condicionais para gerenciar as operações
+
+        let arrContatos = []
+
+        // Realizar a criação do menu:
+        function visualizarMenu() {
+            alert(`
+                ****** Menu de opções *****
+                [1] - Cadastrar um novo contato
+                [2] - Visualizar um contato
+                [3] - Editar um contato
+                [4] - Excluir um contato
+                [5] - Sair do programa
+            `)
+        }
+
+        //Realizar criação da função de cadastro (VERBO HTTP: POST)
+        function cadastroContato() {
+            let nomeContato = prompt("Informe o primeiro nome do contato: ")
+            let numeroContato = prompt(`Informe o numero de telefone do(a) ${nomeContato}`)
+
+            //validação
+            if (!nomeContato || !numeroContato) {
+                alert("O nome e número de telefone são obrigatórios")
+
+                return;
+            }
+
+            //Inserir as informações dentro do nosso array
+            arrContatos.push({ nomeContato, numeroContato })
+
+            alert("Contato foi criado com sucesso!")
+        }
+
+        //Realizar a listagem dos Contatos (VERBO HTTP: GET)
+        function listarContatos() {
+            let listaContato;
+
+            for (const visualizarContatos of arrContatos) {
+                listaContato += (`
+                    Nome: ${visualizarContatos.nomeContato}, Numero de telefone: ${visualizarContatos.numeroContato}
+                `)
+            }
+
+            alert("*********** Lista de contatos ***********" + listaContato)
+        }
+
+        //Realizar a atualização de um contato (VERBO HTTP: PUT)
+        function atualizarContato() {
+            let numeroBuscado = prompt("Informe o número de telefone que você deseja atualizar:")
+            let retornoNumeroBuscado = arrContatos.find(contato => contato.numeroContato === numeroBuscado)
+
+            //condição 
+            if (!retornoNumeroBuscado) {
+                alert("Contato não encontrado")
+
+                return;
+            }
+
+            let novoNomeContato = prompt("Informe o nome atualizado: ")
+            let novoNumeroContato = prompt("Informe o numero atualizado: ")
+
+            //atualizar o nome:
+            if (novoNomeContato) {
+                retornoNumeroBuscado.nomeContato = novoNomeContato;
+            }
+
+            //atualizar o numero
+            if (novoNumeroContato) {
+                retornoNumeroBuscado.numeroContato = novoNumeroContato;
+            }
+
+            alert("O contato foi atualizado!")
+        }
+
+        //Realizar o Delete de um contato (VERBO HTTP: DELETE)
+        function deleteContato() {
+            let contatoBuscadoDelete = prompt("Informe o número de telefone para exclusão: ")
+            let retornoContatoBuscadoDelete = arrContatos.findIndex(contato => contato.numeroContato === contatoBuscadoDelete)
+
+            //condição: Se não localizar
+            if (retornoContatoBuscadoDelete === -1) {
+                alert("Contato não foi encontrado na nossa base de dados!")
+
+                return;
+            }
+
+            //se ele localizar?
+            arrContatos.splice(retornoContatoBuscadoDelete, 1)
+
+            alert("Contato foi excluido com sucesso!")
+        }
+
+        let opcaoUsuario;
+
+        while (opcaoUsuario !== 5) {
+
+            visualizarMenu()
+
+            opcaoUsuario = Number(prompt("Informe uma opção de 1 a 5..."))
+
+            switch (opcaoUsuario) {
+                case 1:
+                    cadastroContato()
+                    break;
+                case 2:
+                    listarContatos()
+                    break;
+                case 3:
+                    atualizarContato()
+                    break;
+                case 4:
+                    deleteContato()
+                    break;
+                case 5:
+                    alert("Obrigado por usar o meu programa! Até a proxima...")
+                    break;
+
+                default:
+                    alert("Opção inválida")
+                    break;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
+-- 
+
+
+ 
+"Prefiro ser feliz do que ter razão"
+Cleyton Souza
+MSN: cleytonl@hotmail.com
+Skype: cleyton.souza
+Antes de imprimir, pense em seu compromisso com o Meio Ambiente.
