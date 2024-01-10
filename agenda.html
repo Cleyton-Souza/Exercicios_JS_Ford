@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
+    <title> Agenda </title>
 </head>
 
 <body>
@@ -17,18 +17,21 @@
         // Realizar a criação do menu:
         function visualizarMenu() {
             alert(`
-                ****** Menu de opções *****
-                [1] - Cadastrar um novo contato
-                [2] - Visualizar um contato
-                [3] - Editar um contato
-                [4] - Excluir um contato
-                [5] - Sair do programa
+             ************ Menu de opções ************
+             +                                      +
+             +   [1] - Cadastrar um novo contato    +
+             +   [2] - Visualizar um contato        +
+             +   [3] - Editar um contato            +
+             +   [4] - Excluir um contato           +
+             +   [5] - Sair do programa             +
+             +                                      +
+             ****************************************
             `)
         }
 
         //Realizar criação da função de cadastro (VERBO HTTP: POST)
         function cadastroContato() {
-            let nomeContato = prompt("Informe o primeiro nome do contato: ")
+            let nomeContato = prompt("Informe o primeiro nome do contato da agenda: ")
             let numeroContato = prompt(`Informe o numero de telefone do(a) ${nomeContato}`)
 
             //validação
@@ -41,7 +44,7 @@
             //Inserir as informações dentro do nosso array
             arrContatos.push({ nomeContato, numeroContato })
 
-            alert("Contato foi criado com sucesso!")
+            alert("Contato foi criado com sucesso na agenda!")
         }
 
         //Realizar a listagem dos Contatos (VERBO HTTP: GET)
@@ -125,7 +128,7 @@
                     deleteContato()
                     break;
                 case 5:
-                    alert("Obrigado por usar o meu programa! Até a proxima...")
+                    alert(" Obrigado por usar o meu programa! Até a proxima... See you")
                     break;
 
                 default:
@@ -138,13 +141,3 @@
 </body>
 
 </html>
-
--- 
-
-
- 
-"Prefiro ser feliz do que ter razão"
-Cleyton Souza
-MSN: cleytonl@hotmail.com
-Skype: cleyton.souza
-Antes de imprimir, pense em seu compromisso com o Meio Ambiente.
